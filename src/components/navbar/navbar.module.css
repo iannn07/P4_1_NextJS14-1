@@ -1,0 +1,17 @@
+.container {
+  background-color: var(--text);
+  color: var(--bg);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  height: 60px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: xx-large;
+  font-weight: bold;
+}
