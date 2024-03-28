@@ -1,5 +1,45 @@
 .links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logout-btn {
+  padding: 10px;
+  border: none;
+  background-color: var(--text);
+  color: var(--bg);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.menu-btn,
+.mobile-link {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .links {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+    cursor: pointer;
+  }
+
+  .mobile-link {
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 50%;
+    height: 100vh;
+    background-color: var(--bg);
+    color: var(--text);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    gap: 10px;
+  }
 }
