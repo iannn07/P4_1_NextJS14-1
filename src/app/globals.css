@@ -2,7 +2,7 @@
   --bg: #040f16;
   --bgSoft: #2d2b42;
   --text: #eaeaea;
-  --textSoft: #e5e5e5;
+  --textSoft: #adb5bd;
   --btn: #3673fd;
 }
 
@@ -73,6 +73,13 @@ a {
 @media (max-width: 640px) {
   .container {
     width: 475px;
+    transition: all 0.25s ease-in-out;
+  }
+}
+
+@media (max-width: 475px) {
+  .container {
+    width: 380px;
     transition: all 0.25s ease-in-out;
   }
 }
