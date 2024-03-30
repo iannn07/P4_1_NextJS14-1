@@ -29,6 +29,10 @@
   width: 90%;
   font-size: 24px;
   margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .description {
@@ -37,6 +41,10 @@
   margin-bottom: 20px;
   font-weight: 300;
   color: var(--textSoft);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .link {
