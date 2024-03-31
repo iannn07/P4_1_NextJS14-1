@@ -9,8 +9,11 @@ const roboto = Roboto({
 })
 
 export const metadata = {
-  title: 'Next App',
-  description: 'Next.js starter app',
+  title: {
+    default: 'NextJS 14',
+    template: '%s | NextJS 14',
+  },
+  description: 'NextJS 14 - Gausspy',
 };
 
 export default function RootLayout({ children }) {
