@@ -4,6 +4,7 @@ import { useState } from 'react';
 import styles from './links.module.css';
 import NavLink from './navLink/navLink';
 import Image from 'next/image';
+import { handleLogout } from '@/lib/actions';
 
 const links = [
   {
@@ -21,12 +22,13 @@ const links = [
   {
     title: 'Blog',
     path: '/blog',
-  }
+  },
 ];
 
-const Links = () => {
+const Links = ({ session }) => {
   const [collapse, setCollapse] = useState(false);
-  const session = true;
+
+  // eslint-disable-next-line no-unused-vars
   const isAdmin = true;
 
   return (
@@ -35,10 +37,16 @@ const Links = () => {
         {links.map((link) => (
           <NavLink item={link} key={link.title} />
         ))}
-        {session ? (
+        {session?.user ? (
           <>
-            {isAdmin && <NavLink item={{ title: 'Admin', path: '/admin' }} />}
-            <button className={styles['logout-btn']}>Logout</button>
+            {session.user?.isAdmin && (
+              <NavLink item={{ title: 'Admin', path: '/admin' }} />
+            )}
+            <form action={handleLogout}>
+              <button className={styles['logout-btn']}>
+                Logout
+              </button>
+            </form>
           </>
         ) : (
           <NavLink item={{ title: 'Login', path: '/login' }} />
