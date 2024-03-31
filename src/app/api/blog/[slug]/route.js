@@ -11,7 +11,7 @@ export const GET = async (request, { params }) => {
     return new Response(JSON.stringify(post), { status: 200 });
   } catch (error) {
     console.log(error);
-    return new Response('Failed to fetch data', { status: 500 });
+    throw new Error('Failed to fetch data', { status: 500 });
   }
 };
 
@@ -25,6 +25,6 @@ export const DELETE = async (request, { params }) => {
     return new Response(JSON.stringify("Deleted"), { status: 200 });
   } catch (error) {
     console.log(error);
-    return new Response('Failed to delete data', { status: 500 });
+    throw new Error('Failed to delete data', { status: 500 });
   }
 };

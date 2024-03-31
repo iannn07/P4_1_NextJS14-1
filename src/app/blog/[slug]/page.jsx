@@ -7,6 +7,7 @@ import { Suspense } from 'react';
 const getPostsData = async (slug) => {
   const res = await fetch(`http://localhost:3000/api/blog/${slug}`, {
     next: { revalidate: 3600 },
+    cache: 'no-store',
   });
 
   if (!res.ok) {
@@ -33,14 +34,7 @@ const SinglePostPage = async ({ params }) => {
   return (
     <div className={styles.container}>
       <div className={styles['img-container']}>
-        <Image
-          src={
-            'https://images.pexels.com/photos/3259624/pexels-photo-3259624.jpeg?auto=compress&cs=tinysrgb&w=600'
-          }
-          alt=''
-          fill
-          className={styles.img}
-        />
+        <Image src={post.img} alt='' fill className={styles.img} />
       </div>
       <div className={styles['text-container']}>
         <h1 className={styles.title}>{post.title}</h1>

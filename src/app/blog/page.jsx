@@ -10,6 +10,7 @@ export const metadata = {
 const getPosts = async () => {
   const res = await fetch('http://localhost:3000/api/blog', {
     next: { revalidate: 3600 },
+    cache: 'no-store',
   });
 
   if (!res.ok) {
