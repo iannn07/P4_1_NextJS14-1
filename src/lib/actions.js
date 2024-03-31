@@ -9,12 +9,12 @@ export const handleGithubLogin = async () => {
   await signIn('github');
 };
 
-export const register = async (formData) => {
+export const register = async (previousState, formData) => {
   const { name, username, email, img, password, confirmPassword } =
     Object.fromEntries(formData);
 
   if (password !== confirmPassword) {
-    return 'Passwords do not match';
+    return { error: 'Passwords do not match' };
   }
 
   try {
@@ -22,7 +22,7 @@ export const register = async (formData) => {
     const user = await User.findOne({ username });
 
     if (user) {
-      return 'Username already exists';
+      return { error: 'Username already exists' };
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -38,19 +38,24 @@ export const register = async (formData) => {
 
     await newUser.save();
     console.log('User registered successfully');
+
+    return { success: true };
   } catch (error) {
     console.log(error);
     throw new Error('Failed to register');
   }
 };
 
-export const handleCredentialLogin = async (formData) => {
+export const handleCredentialLogin = async (previousState, formData) => {
   const { username, password } = Object.fromEntries(formData);
   try {
     await signIn('credentials', { username, password });
   } catch (error) {
     console.log(error);
-    return { error: 'Failed to login' };
+    if (error.message.includes('CredentialsSignin')) {
+      return { error: 'Invalid username or password' };
+    }
+    throw error;
   }
 };
 

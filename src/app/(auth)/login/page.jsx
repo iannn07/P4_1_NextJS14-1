@@ -1,5 +1,7 @@
-import { handleGithubLogin, handleCredentialLogin } from '@/lib/actions';
+import { handleGithubLogin } from '@/lib/actions';
 import styles from './login.module.css';
+import LoginForm from '@/components/login-form/login-form';
+import { IconBrandGithub } from '@tabler/icons-react';
 
 const LoginPage = async () => {
   return (
@@ -7,14 +9,15 @@ const LoginPage = async () => {
       <div className={styles.wrapper}>
         <form action={handleGithubLogin}>
           <button type='submit' className={styles.github}>
-            Login with GitHub
+            <div className={styles['btn-container']}>
+              <div className={styles['btn-item']}>
+                <IconBrandGithub size={24} />
+              </div>
+              <div className={styles['btn-item']}>Login with GitHub</div>
+            </div>
           </button>
         </form>
-        <form className={styles.form} action={handleCredentialLogin}>
-          <input type='text' placeholder='Username' name='username' />
-          <input type='password' placeholder='Password' name='password' />
-          <button>Login</button>
-        </form>
+        <LoginForm />
       </div>
     </div>
   );

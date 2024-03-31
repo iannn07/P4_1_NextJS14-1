@@ -5,6 +5,7 @@ import styles from './links.module.css';
 import NavLink from './navLink/navLink';
 import Image from 'next/image';
 import { handleLogout } from '@/lib/actions';
+import { IconLogout } from '@tabler/icons-react';
 
 const links = [
   {
@@ -44,7 +45,12 @@ const Links = ({ session }) => {
             )}
             <form action={handleLogout}>
               <button className={styles['logout-btn']}>
-                Logout
+                <div className={styles['btn-container']}>
+                  <div>
+                    <IconLogout size={24} />
+                  </div>
+                  <div>Logout</div>
+                </div>
               </button>
             </form>
           </>
