@@ -1,9 +1,9 @@
 const Loading = () => {
   return (
-    <div>
-      Loading
+    <div id='loading-indicator'>
+      <div className='lds-hourglass'></div>
     </div>
-  )
-}
+  );
+};
 
-export default Loading
+export default Loading;
