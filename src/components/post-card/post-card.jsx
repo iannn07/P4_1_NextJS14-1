@@ -12,7 +12,7 @@ const PostCard = ({ post }) => {
           </div>
         )}
         <span className={styles.date}>
-          {post.createdAt.toString().slice(0, 16)}
+          {post.createdAt.toString().slice(0, 10)}
         </span>
       </div>
       <div className={styles.bottom}>

@@ -70,6 +70,11 @@ export const createPost = async (previousState, formData) => {
 
   try {
     dbConnection();
+    const post = await Post.findOne({ slug });
+
+    if (post) {
+      return { error: 'Slug already exists' };
+    }
 
     const newPost = new Post({
       title,
@@ -105,7 +110,7 @@ export const deletePost = async (formData) => {
 };
 
 export const createUser = async (previousState, formData) => {
-  const { name, username, email, img, password } = Object.fromEntries(formData);
+  const { name, username, email, img, password, isAdmin } = Object.fromEntries(formData);
 
   try {
     const user = await User.findOne({ username });
@@ -123,6 +128,7 @@ export const createUser = async (previousState, formData) => {
       email,
       password: hashedPassword,
       img,
+      isAdmin
     });
 
     await newUser.save();

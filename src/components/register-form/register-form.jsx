@@ -6,6 +6,7 @@ import { useFormState } from 'react-dom';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import { IconAlertTriangle } from '@tabler/icons-react';
 
 const RegisterForm = () => {
   const [state, formAction] = useFormState(register, undefined);
@@ -27,7 +28,13 @@ const RegisterForm = () => {
         name='confirmPassword'
       />
       <button>Register</button>
-      {<div className={styles.error}>{state?.error}</div>}
+      {state?.error && (
+        <div className={styles.error}>
+          <IconAlertTriangle size={24} />
+          {state?.error}
+          <IconAlertTriangle size={24} />
+        </div>
+      )}
       <Link href={'/login'}>
         Already have an account? <b>Login Here</b>
       </Link>

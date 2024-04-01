@@ -1,31 +1,27 @@
-.form {
+.container {
   display: flex;
   flex-direction: column;
-  text-align: center;
-  gap: 30px;
+  gap: 20px;
 }
 
-.form input {
+.container input,
+.container textarea,
+.container select {
   padding: 20px;
-  background-color: var(--bg);
-  color: var(--textColor);
+  background-color: var(--bgSoft);
   border: none;
   border-radius: 5px;
+  color: var(--textColor);
 }
 
-.form button {
+.container button {
   padding: 20px;
   cursor: pointer;
   background-color: var(--btn);
-  color: var(--textColor);
-  font-weight: bold;
   border: none;
   border-radius: 5px;
-}
-
-.form button:hover {
-  background-color: var(--btnHover);
-  transition: all 0.25s ease;
+  color: var(--textColor);
+  font-weight: bold;
 }
 
 .error {

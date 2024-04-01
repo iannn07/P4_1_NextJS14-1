@@ -3,6 +3,7 @@ import { dbConnection } from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
 
 export const getPosts = async () => {
+  noStore();
   try {
     dbConnection();
     const posts = await Post.find();
@@ -14,6 +15,7 @@ export const getPosts = async () => {
 };
 
 export const getPostsData = async (slug) => {
+  noStore();
   try {
     dbConnection();
     const post = await Post.findOne({ slug });
